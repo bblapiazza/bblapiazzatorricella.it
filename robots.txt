@@ -1,0 +1,12 @@
+# robots.txt — B&B La Piazza Torricella Sicura
+# Aggiornato: 2026-06-03
+
+User-agent: *
+Allow: /
+
+# Blocca risorse inutili per i bot
+Disallow: /admin/
+Disallow: /wp-admin/
+
+# Sitemap
+Sitemap: https://bblapiazzatorricella.com/sitemap.xml
