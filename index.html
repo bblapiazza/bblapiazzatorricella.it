@@ -858,6 +858,17 @@ const lbD={
 const lbN={l1:'Matrimoniale 1',l2:'Matrimoniale 2',l3:'Cameretta'};
 const lbI={l1:0,l2:0,l3:0};
 
+// Fix mobile touch per lightbox
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.cam-photo').forEach(el => {
+    el.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      const onclick = this.getAttribute('onclick');
+      if (onclick) eval(onclick);
+    }, {passive: false});
+  });
+});
+
 function oLB(id,i){
   lbI[id]=i;
   document.getElementById(id+'i').src=lbD[id][i];
