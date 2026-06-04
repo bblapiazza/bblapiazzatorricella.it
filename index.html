@@ -157,7 +157,7 @@ a{text-decoration:none;color:inherit}
 .cam-badge{position:absolute;top:.8rem;left:.8rem;background:var(--gold);color:white;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.25rem .65rem}
 
 .cam-body{padding:1.4rem 1.6rem 1.8rem}
-.cam-name{font-family:'Cormorant',serif;font-size:1.45rem;font-weight:500;color:var(--ink);margin-bottom:.45rem}
+.cam-name{font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:.5rem}
 .cam-desc{font-size:.81rem;font-weight:300;color:var(--mist);line-height:1.7;margin-bottom:.9rem}
 
 /* Thumbnails */
@@ -633,6 +633,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
           <div class="esp-det-title">Gran Sasso d'Italia</div>
           <span class="esp-det-dist">Da 71 a 100 km</span>
           <p class="esp-det-text">Il tetto degli Appennini (2912 m). Estate: trekking e via ferrata per tutti i livelli. Inverno: sci alpino e snowboard. La funivia di Fonte Cerreto porta in quota in 8 minuti.</p>
+          <div class="esp-det-tags"><span class="dtag">Trekking</span><span class="dtag">Sci invernale</span><span class="dtag">Funivia</span><span class="dtag">Via ferrata</span></div>
           <div style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--sand2)">
             <div style="font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem">Mete principali</div>
             <div style="display:flex;flex-direction:column;gap:.4rem">
@@ -653,6 +654,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
           <div class="esp-det-title">Cascata delle Morricane — Monti della Laga</div>
           <span class="esp-det-dist">40 km · Parco Nazionale</span>
           <p class="esp-det-text">Una delle cascate più spettacolari del Parco Nazionale Gran Sasso e Monti della Laga. Sentiero accessibile nel bosco di faggio, ideale per famiglie. Consigliata in primavera e dopo le piogge per la massima portata d'acqua.</p>
+          <div class="esp-det-tags"><span class="dtag">Cascata</span><span class="dtag">Bosco di faggio</span><span class="dtag">Famiglie</span><span class="dtag">Parco Nazionale</span></div>
           <div style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--sand2)">
             <div style="font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem">Da visitare anche</div>
             <div style="display:flex;flex-direction:column;gap:.4rem">
@@ -675,6 +677,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
           <div class="esp-det-title">Costa Adriatica</div>
           <span class="esp-det-dist">40 km</span>
           <p class="esp-det-text">Giulianova, Roseto degli Abruzzi, Tortoreto, Alba Adriatica: spiagge di sabbia fine e acque cristalline a soli 40 minuti in auto. Mattina tra i monti, pomeriggio al mare — tutto nello stesso giorno.</p>
+          <div class="esp-det-tags"><span class="dtag">Spiaggia</span><span class="dtag">Bandiera Blu</span><span class="dtag">Sabbia fine</span><span class="dtag">Pesce fresco</span></div>
           <div style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--sand2)">
             <div style="font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem">Da visitare anche</div>
             <div style="display:flex;flex-direction:column;gap:.4rem">
@@ -696,6 +699,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
           <div class="esp-det-title">Civitella del Tronto &amp; Rocca Calascio</div>
           <span class="esp-det-dist">8 km</span>
           <p class="esp-det-text">Civitella del Tronto: fortezza borbonica tra le più grandi d'Europa. Rocca Calascio: scenario di film storici, panorama mozzafiato sull'altopiano delle Rocche.</p>
+          <div class="esp-det-tags"><span class="dtag">Borgo medievale</span><span class="dtag">Fortezza</span><span class="dtag">Rocca Calascio</span></div>
           <div style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--sand2)">
             <div style="font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin-bottom:.5rem">Da visitare anche</div>
             <div style="display:flex;flex-direction:column;gap:.4rem">
@@ -777,15 +781,15 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
   <div class="struttura-grid fade2">
     <div class="spazi-col">
       <div class="spazi-foto" onclick="oSL(0)"><img src="img/spazi_cucina.jpg" alt="Cucina B&B La Piazza Torricella Sicura" loading="lazy"><div class="spazi-foto-ov"><span class="spazi-foto-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Vedi foto</span></div></div>
-      <div class="spazi-text"><div style="font-family:'Cormorant',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.3rem">Cucina &amp; Sala comune</div><p style="font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.6">Completamente attrezzata con zona pranzo per 6 persone e accesso all'esterno.</p></div>
+      <div class="spazi-text"><div style="font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:.5rem">Cucina &amp; Sala comune</div><p style="font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.6">Completamente attrezzata con zona pranzo per 6 persone e accesso all'esterno.</p></div>
     </div>
     <div class="spazi-col">
       <div class="spazi-foto" onclick="oSL(1)"><img src="img/bagno_1.jpg" alt="Bagno 1 con vasca B&B La Piazza Torricella Sicura" loading="lazy"><div class="spazi-foto-ov"><span class="spazi-foto-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Vedi foto</span></div></div>
-      <div class="spazi-text"><div style="font-family:'Cormorant',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.3rem">Bagno 1 — con vasca</div><p style="font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.6">Vasca da bagno, sanitari sospesi, piastrelle a mosaico. Bidet e finestra con luce naturale.</p></div>
+      <div class="spazi-text"><div style="font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:.5rem">Bagno 1 — con vasca</div><p style="font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.6">Vasca da bagno, sanitari sospesi, piastrelle a mosaico. Bidet e finestra con luce naturale.</p></div>
     </div>
     <div class="spazi-col">
       <div class="spazi-foto" onclick="oSL(2)"><img src="img/bagno_2.jpg" alt="Bagno 2 con doccia B&B La Piazza Torricella Sicura" loading="lazy"><div class="spazi-foto-ov"><span class="spazi-foto-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Vedi foto</span></div></div>
-      <div class="spazi-text"><div style="font-family:'Cormorant',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.3rem">Bagno 2 — con doccia</div><p style="font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.6">Box doccia, lavatrice, bidet, sanitari e scaldasalviette. Ampio e luminoso.</p></div>
+      <div class="spazi-text"><div style="font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:.5rem">Bagno 2 — con doccia</div><p style="font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.6">Box doccia, lavatrice, bidet, sanitari e scaldasalviette. Ampio e luminoso.</p></div>
     </div>
   </div>
 </section>
