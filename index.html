@@ -187,46 +187,31 @@ a{text-decoration:none;color:inherit}
 .lb-next{right:1rem}
 
 /* ── ESPERIENZE ── */
-.esp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;background:var(--sand2)}
-.esp-card{position:relative;overflow:hidden}
-
-.esp-photo{position:relative;overflow:hidden}
-.esp-card .esp-photo{height:240px}
-.esp-bg{width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .7s var(--ease);display:block}
-.esp-card:hover .esp-bg{transform:scale(1.05)}
+.esp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;background:var(--sand2);border-radius:0}
+.esp-card{position:relative;overflow:hidden;cursor:pointer;background:var(--white)}
+.esp-photo{height:200px;position:relative;overflow:hidden}
+.esp-bg{width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform .5s var(--ease);display:block}
+.esp-card:hover .esp-bg{transform:scale(1.06)}
 .esp-div{width:100%;height:100%}
-.esp-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,4,.88) 0%,rgba(10,8,4,.1) 65%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem}
-.esp-cat{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:.3rem}
-.esp-title{font-family:'Cormorant',serif;font-size:1.35rem;font-weight:500;color:white;line-height:1.2;margin-bottom:.3rem}
-.esp-card.wide .esp-title{font-size:1.8rem}
-.esp-desc{font-size:.74rem;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;max-height:0;overflow:hidden;opacity:0;transition:max-height .4s,opacity .4s}
-.esp-card:hover .esp-desc{max-height:80px;opacity:1}
-.esp-gransasso{background:linear-gradient(160deg,#4a6040,#1e3018)}
-.esp-laga{background:linear-gradient(160deg,#3a6858,#1a2e28)}
-.esp-borghi{background:linear-gradient(160deg,#8a6840,#3a2e18)}
-.esp-gastro{background:linear-gradient(160deg,#8a4830,#3a2018)}
-.esp-mare{background:linear-gradient(160deg,#2a6888,#0e2a3a)}
-.esp-details{background:var(--white);display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background-color:var(--sand2);margin-top:2px}
-.esp-det{background:var(--white);padding:1.6rem 1.8rem}
-.det-icon{font-size:1.6rem;margin-bottom:.6rem;display:block}
-.det-title{font-family:'Cormorant',serif;font-size:1.1rem;font-weight:500;color:var(--ink);margin-bottom:.3rem}
-.det-dist{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;display:block}
-.det-text{font-size:.78rem;font-weight:300;color:var(--mist);line-height:1.65}
-.det-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
-.dtag{font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);border:1px solid rgba(78,94,60,.25);padding:.2rem .55rem}
+.esp-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,4,.88) 0%,rgba(10,8,4,.05) 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:.9rem .8rem;transition:background .3s}
+.esp-card:hover .esp-ov,.esp-card.open .esp-ov{background:linear-gradient(to top,rgba(10,8,4,.92) 0%,rgba(10,8,4,.15) 70%)}
+.esp-cat{font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:.25rem}
+.esp-title{font-family:'Cormorant',serif;font-size:1rem;font-weight:500;color:white;line-height:1.2}
+.esp-arr{position:absolute;top:.6rem;right:.6rem;width:22px;height:22px;border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;color:white;transition:all .3s;background:rgba(0,0,0,.2)}
+.esp-arr svg{transition:transform .3s;width:10px;height:10px}
+.esp-card.open .esp-arr{background:var(--gold);border-color:var(--gold)}
+.esp-card.open .esp-arr svg{transform:rotate(180deg)}
 
-/* ── VISTA ── */
-.vista{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
-.vista-img{overflow:hidden}
-.vista-img img{width:100%;height:100%;object-fit:cover}
-.vista-inn{background:var(--ink);padding:5rem;display:flex;flex-direction:column;justify-content:center;gap:2rem}
-.vista-inn .h2{color:white}
-.dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06)}
-.di{padding:1.2rem 1rem;background:var(--ink);transition:background .3s}
-.di:hover{background:rgba(255,255,255,.03)}
-.dn{font-family:'Cormorant',serif;font-size:1.8rem;font-weight:400;color:var(--gold);display:block;line-height:1}
-.dp{font-size:.78rem;font-weight:500;color:white;margin:.2rem 0;display:block}
-.dinfo{font-size:.72rem;font-weight:300;color:rgba(255,255,255,.3);line-height:1.5}
+/* Detail panel */
+.esp-det-panel{max-height:0;overflow:hidden;transition:max-height .5s var(--ease);background:var(--white);grid-column:1/-1}
+.esp-det-panel.open{max-height:400px}
+.esp-det-inner{padding:1.4rem 1.8rem;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;border-top:1px solid var(--sand2)}
+.esp-det-title{font-family:'Cormorant',serif;font-size:1.25rem;font-weight:500;color:var(--ink);margin-bottom:.3rem}
+.esp-det-dist{font-size:.62rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;display:block}
+.esp-det-text{font-size:.82rem;font-weight:300;color:var(--mist);line-height:1.7}
+.esp-det-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+.esp-det-close{background:none;border:1px solid var(--sand2);color:var(--mist);font-size:.7rem;font-family:'Outfit',sans-serif;padding:.4rem .8rem;cursor:pointer;transition:all .3s;white-space:nowrap;letter-spacing:.05em}
+.esp-det-close:hover{border-color:var(--gold);color:var(--gold)}
 
 /* ── ESPERIENZE ACCORDION ── */
 .esp-acc { margin-top: 3px; background: var(--sand2); display: flex; flex-direction: column; gap: 2px; }
@@ -417,7 +402,8 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
   .cam-photo img{max-height:340px}
   .esp-grid{grid-template-columns:1fr}
   .esp-grid{grid-template-columns:repeat(2,1fr)}
-  .esp-card .esp-photo{height:180px}
+  .esp-card .esp-photo{height:160px}
+  .esp-det-inner{grid-template-columns:1fr}
   .esp-details{grid-template-columns:1fr}
   .vista,.split,.cw{grid-template-columns:1fr}
   .vista-img,.split-img{height:280px}
@@ -581,175 +567,68 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
 <section class="sec sec-sand" id="esperienze">
   <div class="split-hdr">
     <div class="fade"><div class="lbl">Cosa fare</div><h2 class="h2" style="margin-top:.8rem">Esperienze<br><span class="em">da non perdere</span></h2></div>
-    <p class="bd fade2">Torricella Sicura è il punto di partenza ideale: montagna, natura, storia, gastronomia e Costa Adriatica a 40 minuti.</p>
+    <p class="bd fade2">Torricella Sicura è il punto di partenza ideale. Clicca su ogni esperienza per scoprire i dettagli.</p>
   </div>
-  <div class="esp-grid fade">
-    <div class="esp-card">
-      <div class="esp-photo"><img src="img/esp_gransasso.jpg" alt="Vista Gran Sasso da Torricella Sicura" class="esp-bg">
-        <div class="esp-ov"><div class="esp-cat">Montagna &amp; Natura</div><div class="esp-title">Gran Sasso d'Italia</div><div class="esp-desc">Il tetto degli Appennini a 50 km. Escursioni, sci invernale a Campo Imperatore, panorami mozzafiato.</div></div>
+
+  <div class="esp-grid fade" id="espGrid">
+
+    <div class="esp-card" data-id="0" onclick="toggleEsp(0)">
+      <div class="esp-photo"><img src="img/esp_gransasso.jpg" alt="Vista Gran Sasso da Torricella Sicura" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Montagna &amp; Natura</div><div class="esp-title">Gran Sasso</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+    </div>
+
+    <div class="esp-card" data-id="1" onclick="toggleEsp(1)">
+      <div class="esp-photo"><img src="img/esp_laga.jpg" alt="Monti della Laga Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Natura &amp; Cascate</div><div class="esp-title">Monti della Laga</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+    </div>
+
+    <div class="esp-card" data-id="2" onclick="toggleEsp(2)">
+      <div class="esp-photo"><img src="img/esp_costa.jpg" alt="Costa Adriatica Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Costa &amp; Spiagge</div><div class="esp-title">Costa Adriatica</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+    </div>
+
+    <div class="esp-card" data-id="3" onclick="toggleEsp(3)">
+      <div class="esp-photo"><img src="img/esp_borghi.jpg" alt="Rocca Calascio borghi Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Arte &amp; Storia</div><div class="esp-title">Borghi e castelli</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+    </div>
+
+    <div class="esp-card" data-id="4" onclick="toggleEsp(4)">
+      <div class="esp-photo"><img src="img/esp_gastro.jpg" alt="Gastronomia porcini Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Sapori Abruzzesi</div><div class="esp-title">Gastronomia</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+    </div>
+
+    <!-- PANNELLI DETTAGLIO -->
+    <div class="esp-det-panel" id="edp0">
+      <div class="esp-det-inner">
+        <div><div class="esp-det-title">Gran Sasso — Campo Imperatore</div><span class="esp-det-dist">50 km · 45 min</span><p class="esp-det-text">Il tetto degli Appennini (2912 m) a 50 km. Estate: trekking e via ferrata per tutti i livelli. Inverno: sci alpino, snowboard e sci nordico a Campo Imperatore. La funivia di Fonte Cerreto porta in quota in 8 minuti. Consigliato: alba sul Corno Grande, Lago di Campotosto, sentiero dei Briganti.</p><div class="esp-det-tags"><span class="dtag">Trekking</span><span class="dtag">Sci invernale</span><span class="dtag">Funivia</span><span class="dtag">Via ferrata</span><span class="dtag">Fotografia</span></div></div>
+        <button class="esp-det-close" onclick="event.stopPropagation();closeEsp(0)">Chiudi ↑</button>
       </div>
     </div>
-    <div class="esp-card">
-      <div class="esp-photo">
-        <img src="img/esp_laga.jpg" alt="Monti della Laga fiori Gran Sasso Abruzzo" class="esp-bg">
-        <div class="esp-ov"><div class="esp-cat">Natura &amp; Cascate</div><div class="esp-title">Monti della Laga</div><div class="esp-desc">Cascata delle Morricane, boschi di faggio, sentieri CAI. Natura selvaggia a pochi km.</div></div>
+
+    <div class="esp-det-panel" id="edp1">
+      <div class="esp-det-inner">
+        <div><div class="esp-det-title">Cascata delle Morricane — Monti della Laga</div><span class="esp-det-dist">~15 km · Parco Nazionale</span><p class="esp-det-text">Una delle cascate più spettacolari del Parco Nazionale Gran Sasso e Monti della Laga. Sentiero accessibile nel bosco di faggio, ideale per famiglie. Consigliata in primavera e dopo le piogge per la massima portata d'acqua.</p><div class="esp-det-tags"><span class="dtag">Cascata</span><span class="dtag">Bosco di faggio</span><span class="dtag">Famiglie</span><span class="dtag">Parco Nazionale</span></div></div>
+        <button class="esp-det-close" onclick="event.stopPropagation();closeEsp(1)">Chiudi ↑</button>
       </div>
     </div>
-    <div class="esp-card">
-      <div class="esp-photo">
-        <img src="img/esp_costa.jpg" alt="Costa Adriatica arcobaleno spiaggia Abruzzo" class="esp-bg">
-        <div class="esp-ov"><div class="esp-cat">Costa &amp; Spiagge</div><div class="esp-title">Costa Adriatica — 40 km</div><div class="esp-desc">Giulianova, Roseto degli Abruzzi, Alba Adriatica. Mattina in montagna, pomeriggio al mare.</div></div>
+
+    <div class="esp-det-panel" id="edp2">
+      <div class="esp-det-inner">
+        <div><div class="esp-det-title">Costa Adriatica</div><span class="esp-det-dist">40 km · 40 min</span><p class="esp-det-text">Giulianova, Roseto degli Abruzzi, Alba Adriatica: spiagge di sabbia fine e acque cristalline a soli 40 minuti in auto. Mattina tra i monti, pomeriggio al mare — tutto nello stesso giorno. Consigliato: porto di Giulianova per il pesce fresco, lungomare di Roseto al tramonto.</p><div class="esp-det-tags"><span class="dtag">Spiaggia</span><span class="dtag">Giulianova</span><span class="dtag">Roseto A.</span><span class="dtag">Pesce fresco</span></div></div>
+        <button class="esp-det-close" onclick="event.stopPropagation();closeEsp(2)">Chiudi ↑</button>
       </div>
     </div>
-    </div>
-    <div class="esp-card">
-      <div class="esp-photo">
-        <img src="img/esp_borghi.jpg" alt="Rocca Calascio borghi medievali Abruzzo" class="esp-bg">
-        <div class="esp-ov"><div class="esp-cat">Arte &amp; Storia</div><div class="esp-title">Borghi e castelli</div><div class="esp-desc">Civitella del Tronto (8 km), Campli, Rocca Calascio. Storia medievale a portata di mano.</div></div>
+
+    <div class="esp-det-panel" id="edp3">
+      <div class="esp-det-inner">
+        <div><div class="esp-det-title">Civitella del Tronto &amp; Rocca Calascio</div><span class="esp-det-dist">8 km · 10 min</span><p class="esp-det-text">Civitella del Tronto: fortezza borbonica tra le più grandi d'Europa, centro storico medievale e museo. Rocca Calascio: tra le più belle d'Italia, scenario di film storici. Da visitare anche Campli con la necropoli picena e Teramo con il suo teatro romano.</p><div class="esp-det-tags"><span class="dtag">Borgo medievale</span><span class="dtag">Fortezza</span><span class="dtag">Rocca Calascio</span><span class="dtag">Campli</span></div></div>
+        <button class="esp-det-close" onclick="event.stopPropagation();closeEsp(3)">Chiudi ↑</button>
       </div>
     </div>
-    <div class="esp-card">
-      <div class="esp-photo">
-        <img src="img/esp_gastro.jpg" alt="Porcini bosco gastronomia Abruzzo" class="esp-bg">
-        <div class="esp-ov"><div class="esp-cat">Sapori Abruzzesi</div><div class="esp-title">Gastronomia locale</div><div class="esp-desc">Arrosticini, maccheroni alla chitarra, pecorino di Farindola DOP, Montepulciano DOC.</div></div>
+
+    <div class="esp-det-panel" id="edp4">
+      <div class="esp-det-inner">
+        <div><div class="esp-det-title">Gastronomia abruzzese</div><span class="esp-det-dist">Prodotti del territorio</span><p class="esp-det-text">Arrosticini di Castilenti (10 km), pecorino di Farindola DOP, porcini dei Monti della Laga, Montepulciano d'Abruzzo DOC. Agriturismi e ristoranti tipici a pochi minuti. Da non perdere: mercato contadino di Teramo il venerdì e sagre locali in estate.</p><div class="esp-det-tags"><span class="dtag">Arrosticini</span><span class="dtag">Pecorino DOP</span><span class="dtag">Porcini</span><span class="dtag">Montepulciano</span></div></div>
+        <button class="esp-det-close" onclick="event.stopPropagation();closeEsp(4)">Chiudi ↑</button>
       </div>
     </div>
+
   </div>
-  <div class="esp-acc fade2">
-
-      <div class="esp-acc-item">
-        <div class="esp-acc-head" onclick="toggleAcc(this)">
-          <div class="esp-acc-left">
-            <span class="esp-acc-icon">⛰️</span>
-            <span class="esp-acc-title">Gran Sasso — Campo Imperatore</span>
-            <span class="esp-acc-dist">50 km · 45 min</span>
-          </div>
-          <div class="esp-acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-        <div class="esp-acc-body">
-          <div class="esp-acc-inner">
-            <div class="esp-acc-text">
-              <p>Il tetto degli Appennini (2912 m) è a 50 km. Estate: trekking e via ferrata per tutti i livelli. Inverno: sci alpino, snowboard e sci nordico a Campo Imperatore. La funivia di Fonte Cerreto porta in quota in 8 minuti.</p>
-              <p>Consigliato: alba sul Corno Grande, Lago di Campotosto, sentiero dei Briganti.</p>
-              <div class="esp-acc-tags"><span class="dtag">Trekking</span><span class="dtag">Sci invernale</span><span class="dtag">Funivia</span><span class="dtag">Via ferrata</span><span class="dtag">Fotografia</span></div>
-              <p class="esp-coming">Prossimamente: mappa sentieri e itinerari consigliati</p>
-            </div>
-            <div class="esp-acc-img no-img"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="esp-acc-item">
-        <div class="esp-acc-head" onclick="toggleAcc(this)">
-          <div class="esp-acc-left">
-            <span class="esp-acc-icon">💧</span>
-            <span class="esp-acc-title">Cascata delle Morricane</span>
-            <span class="esp-acc-dist">~15 km · Monti della Laga</span>
-          </div>
-          <div class="esp-acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-        <div class="esp-acc-body">
-          <div class="esp-acc-inner">
-            <div class="esp-acc-text">
-              <p>Una delle cascate più spettacolari del Parco Nazionale Gran Sasso e Monti della Laga. Sentiero accessibile nel bosco di faggio, ideale per famiglie e appassionati di natura.</p>
-              <p>Consigliata in primavera e dopo le piogge per la massima portata d'acqua.</p>
-              <div class="esp-acc-tags"><span class="dtag">Cascata</span><span class="dtag">Bosco di faggio</span><span class="dtag">Famiglie</span><span class="dtag">Parco Nazionale</span></div>
-              <p class="esp-coming">Prossimamente: foto, mappa del sentiero e info accesso</p>
-            </div>
-            <div class="esp-acc-img no-img"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="esp-acc-item">
-        <div class="esp-acc-head" onclick="toggleAcc(this)">
-          <div class="esp-acc-left">
-            <span class="esp-acc-icon">🏰</span>
-            <span class="esp-acc-title">Civitella del Tronto &amp; Rocca Calascio</span>
-            <span class="esp-acc-dist">8 km · 10 min</span>
-          </div>
-          <div class="esp-acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-        <div class="esp-acc-body">
-          <div class="esp-acc-inner">
-            <div class="esp-acc-text">
-              <p>Civitella del Tronto ospita una delle fortezze borboniche più grandi d'Europa. Centro storico medievale, museo e panorama sulla Valle del Tronto. Rocca Calascio, tra le più belle d'Italia, è scenario di film storici.</p>
-              <p>Da visitare anche: Campli con la necropoli picena, e Teramo con il suo teatro romano.</p>
-              <div class="esp-acc-tags"><span class="dtag">Borgo medievale</span><span class="dtag">Fortezza</span><span class="dtag">Museo</span><span class="dtag">Rocca Calascio</span><span class="dtag">Campli</span></div>
-              <p class="esp-coming">Prossimamente: mappa borghi e orari di visita</p>
-            </div>
-            <div class="esp-acc-img no-img"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="esp-acc-item">
-        <div class="esp-acc-head" onclick="toggleAcc(this)">
-          <div class="esp-acc-left">
-            <span class="esp-acc-icon">🌊</span>
-            <span class="esp-acc-title">Costa Adriatica</span>
-            <span class="esp-acc-dist">40 km · 40 min</span>
-          </div>
-          <div class="esp-acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-        <div class="esp-acc-body">
-          <div class="esp-acc-inner">
-            <div class="esp-acc-text">
-              <p>Giulianova, Roseto degli Abruzzi, Alba Adriatica: spiagge di sabbia fine, acque cristalline e lungomari attrezzati. A soli 40 minuti in auto — mattina tra i monti, pomeriggio al mare.</p>
-              <p>Consigliato: porto di Giulianova per il pesce fresco, lungomare di Roseto al tramonto.</p>
-              <div class="esp-acc-tags"><span class="dtag">Spiaggia</span><span class="dtag">Giulianova</span><span class="dtag">Roseto A.</span><span class="dtag">Pesce fresco</span><span class="dtag">Lungomare</span></div>
-              <p class="esp-coming">Prossimamente: stabilimenti balneari consigliati e ristoranti di pesce</p>
-            </div>
-            <div class="esp-acc-img no-img"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="esp-acc-item">
-        <div class="esp-acc-head" onclick="toggleAcc(this)">
-          <div class="esp-acc-left">
-            <span class="esp-acc-icon">🍷</span>
-            <span class="esp-acc-title">Gastronomia abruzzese</span>
-            <span class="esp-acc-dist">Prodotti del territorio</span>
-          </div>
-          <div class="esp-acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-        <div class="esp-acc-body">
-          <div class="esp-acc-inner">
-            <div class="esp-acc-text">
-              <p>Arrosticini di Castilenti (10 km), maccheroni alla chitarra, pecorino di Farindola DOP, porcini dei Monti della Laga, Montepulciano d'Abruzzo DOC. Agriturismi e ristoranti tipici a pochi minuti.</p>
-              <p>Da non perdere: mercato contadino di Teramo il venerdì, sagre locali in estate.</p>
-              <div class="esp-acc-tags"><span class="dtag">Arrosticini</span><span class="dtag">Pecorino DOP</span><span class="dtag">Montepulciano</span><span class="dtag">Porcini</span><span class="dtag">Agriturismo</span></div>
-              <p class="esp-coming">Prossimamente: ristoranti e produttori locali consigliati</p>
-            </div>
-            <div class="esp-acc-img no-img"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="esp-acc-item">
-        <div class="esp-acc-head" onclick="toggleAcc(this)">
-          <div class="esp-acc-left">
-            <span class="esp-acc-icon">🏛️</span>
-            <span class="esp-acc-title">Teramo — arte e storia</span>
-            <span class="esp-acc-dist">8 km · 10 min</span>
-          </div>
-          <div class="esp-acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-        <div class="esp-acc-body">
-          <div class="esp-acc-inner">
-            <div class="esp-acc-text">
-              <p>Centro storico romano e medievale con la cattedrale di Santa Maria Assunta (XII sec.), teatro romano, museo civico e pinacoteca. Ottima offerta ristorativa e commerciale.</p>
-              <p>Da non perdere: museo delle genti d'Abruzzo, passeggiata nel centro storico la sera.</p>
-              <div class="esp-acc-tags"><span class="dtag">Cattedrale</span><span class="dtag">Teatro romano</span><span class="dtag">Museo</span><span class="dtag">Shopping</span><span class="dtag">Ristorazione</span></div>
-              <p class="esp-coming">Prossimamente: mappa centro storico e luoghi da visitare</p>
-            </div>
-            <div class="esp-acc-img no-img"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
 </section>
 
 <!-- TERRITORIO -->
@@ -979,6 +858,43 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
 </button>
 
 <script>
+// ── ESPERIENZE EXPAND ──
+let espOpen = null;
+function toggleEsp(id) {
+  if (espOpen === id) { closeEsp(id); return; }
+  if (espOpen !== null) closeEsp(espOpen);
+  espOpen = id;
+  document.querySelector('#espGrid [data-id="'+id+'"]').classList.add('open');
+  document.getElementById('edp'+id).classList.add('open');
+  setTimeout(() => {
+    document.getElementById('edp'+id).scrollIntoView({behavior:'smooth', block:'nearest'});
+  }, 100);
+}
+function closeEsp(id) {
+  const card = document.querySelector('#espGrid [data-id="'+id+'"]');
+  if (card) card.classList.remove('open');
+  const panel = document.getElementById('edp'+id);
+  if (panel) panel.classList.remove('open');
+  if (espOpen === id) espOpen = null;
+}
+// Touch support per mobile
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.esp-card').forEach(el => {
+    el.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      toggleEsp(parseInt(this.dataset.id));
+    }, {passive: false});
+  });
+  document.querySelectorAll('.esp-det-close').forEach(el => {
+    el.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = parseInt(this.closest('.esp-det-panel').id.replace('edp',''));
+      closeEsp(id);
+    }, {passive: false});
+  });
+});
+
 // ── STRUTTURA LIGHTBOX ──
 const slImgs = ['img/spazi_cucina.jpg','img/bagno_1.jpg','img/bagno_2.jpg'];
 const slCaps = ['Cucina — 1/3','Bagno 1 con vasca — 2/3','Bagno 2 con doccia — 3/3'];
