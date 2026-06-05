@@ -69,16 +69,21 @@ a{text-decoration:none;color:inherit}
 #nav.solid .nav-si{border-color:rgba(0,0,0,.1);color:var(--mist)}
 .nav-si:hover{background:var(--gold)!important;border-color:var(--gold)!important;color:white!important}
 .nav-si svg{width:14px;height:14px}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.nav-burger span{display:block;width:24px;height:1.5px;background:white;transition:background .4s}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;-webkit-tap-highlight-color:transparent;position:relative;z-index:600}
+.nav-burger span{display:block;width:24px;height:1.5px;background:white;transition:all .3s var(--ease);transform-origin:center}
 #nav.solid .nav-burger span{background:var(--ink)}
+.nav-burger.active{position:fixed;top:1.4rem;right:1.5rem}
+.nav-burger.active span{background:white!important}
+.nav-burger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
 /* ── MOBILE MENU ── */
 .mob{display:none;position:fixed;inset:0;z-index:490;background:rgba(24,21,18,.97);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
 .mob.open{display:flex}
 .mob a{font-family:'Cormorant',serif;font-size:2.2rem;font-weight:300;color:white;transition:color .3s}
 .mob a:hover{color:var(--gold)}
-.mob-x{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:rgba(255,255,255,.5);cursor:pointer;background:none;border:none}
+
 
 /* ── HERO ── */
 .hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;overflow:hidden}
@@ -181,7 +186,7 @@ a{text-decoration:none;color:inherit}
 .lb-x{position:absolute;top:1.2rem;right:1.8rem;color:rgba(255,255,255,.6);font-size:2rem;cursor:pointer;background:none;border:none;line-height:1;z-index:10;transition:color .2s}
 .lb-x:hover{color:white}
 .lb-cap{color:rgba(255,255,255,.4);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-top:1rem}
-.lb-n{position:absolute;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.5);font-size:2.5rem;cursor:pointer;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);width:50px;height:50px;display:flex;align-items:center;justify-content:center;transition:all .3s;user-select:none;z-index:10}
+.lb-n{position:absolute;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.7);font-size:2rem;cursor:pointer;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:all .3s;user-select:none;z-index:10;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .lb-n:hover{background:rgba(255,255,255,.1);color:white}
 .lb-prev{left:1rem}
 .lb-next{right:1rem}
@@ -419,6 +424,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
 
 @media(max-width:960px){
   .servizi-grid{grid-template-columns:repeat(2,1fr)}
+  #chisiamo [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
   .struttura-grid{grid-template-columns:1fr}
   .struttura-grid .spazi-foto{height:220px}
 
@@ -450,14 +456,12 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
   .footer-social-btn{justify-content:center}
   .fseo{justify-content:center}
   .soc{padding:1rem 1.5rem}
-  .lb-n{display:none}
 }
 </style>
 </head>
 <body>
 
 <div class="mob" id="mob">
-  <button class="mob-x" onclick="cM()">✕</button>
   <a href="#camere" onclick="cM()">Camere</a>
   <a href="#esperienze" onclick="cM()">Esperienze</a>
   <a href="#spazi" onclick="cM()">La struttura</a>
@@ -484,7 +488,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
     </a>
   </div>
-  <div class="nav-burger" onclick="oM()"><span></span><span></span><span></span></div>
+  <div class="nav-burger" onclick="tM()"><span></span><span></span><span></span></div>
 </nav>
 
 <section class="hero" id="top">
@@ -519,54 +523,54 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
 <section class="sec" id="camere">
   <div class="split-hdr">
     <div class="fade"><div class="lbl">Le camere</div><h2 class="h2" style="margin-top:.8rem">Tre camere,<br>tre <span class="em">atmosfere</span></h2></div>
-    <p class="bd fade2">Il nostro <strong>bed and breakfast a Torricella Sicura</strong>, in <strong>provincia di Teramo</strong>, offre tre camere arredate con cura. A soli 8 km da Teramo, ideale per chi cerca un <strong>B&amp;B vicino Teramo</strong> immerso nella natura. Clicca sulle foto per vederle in dettaglio.</p>
+    <p class="bd fade2">Il nostro <strong>bed and breakfast a Torricella Sicura</strong>, in <strong>provincia di Teramo</strong>, offre tre camere arredate con cura, con vista sulle colline abruzzesi. A soli 8 km da <strong>Teramo</strong> e a poca distanza dal <strong>Gran Sasso</strong> e dalla <strong>Costa Adriatica</strong> — ideale per chi cerca un <strong>B&amp;B vicino Teramo</strong> immerso nella natura. Clicca sulle foto per vederle in dettaglio.</p>
   </div>
   <div class="cam-grid fade">
 
     <div class="cam-card">
-      <div class="cam-photo" data-lb="l1">
-        <img src="img/cam1.jpg" alt="Camera Matrimoniale 1 B&B La Piazza Torricella Sicura" id="c1">
+      <div class="cam-photo" data-lb="l1" onclick="oLB('l1',lbI['l1']||0)">
+        <img loading="lazy" src="img/cam1.jpg" alt="Camera Matrimoniale 1 B&B La Piazza Torricella Sicura" id="c1">
         <div class="cam-overlay"><div class="cam-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Vedi foto</div></div>
         <div class="cam-badge">Più richiesta</div>
       </div>
       <div class="cam-body">
         <div class="cam-name">Camera Matrimoniale 1</div>
-        <p class="cam-desc">Luminosa con vista panoramica sulle colline. Letto matrimoniale, bagno privato con doccia e lavatrice, TV, aria condizionata.</p>
+        <p class="cam-desc">Camera matrimoniale luminosa con vista panoramica sulle colline abruzzesi. Letto matrimoniale, bagno privato con doccia, lavatrice, TV e aria condizionata.</p>
         <div class="cam-thumbs">
-          <img src="img/cam1_t1.jpg" class="ct on cam-thumb-btn" data-cid="c1" data-lid="l1" data-idx="0" alt="M1-1">
-          <img src="img/cam1_t2.jpg" class="ct cam-thumb-btn" data-cid="c1" data-lid="l1" data-idx="1" alt="M1-2">
-          <img src="img/cam1_t3.jpg" class="ct cam-thumb-btn" data-cid="c1" data-lid="l1" data-idx="2" alt="M1-3">
+          <img loading="lazy" src="img/cam1_t1.jpg" class="ct on cam-thumb-btn" data-cid="c1" data-lid="l1" data-idx="0" alt="M1-1" onclick="(function(el){document.getElementById('c1').src=lbD['l1'][0];lbI['l1']=parseInt('0');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
+          <img loading="lazy" src="img/cam1_t2.jpg" class="ct cam-thumb-btn" data-cid="c1" data-lid="l1" data-idx="1" alt="M1-2" onclick="(function(el){document.getElementById('c1').src=lbD['l1'][1];lbI['l1']=parseInt('1');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
+          <img loading="lazy" src="img/cam1_t3.jpg" class="ct cam-thumb-btn" data-cid="c1" data-lid="l1" data-idx="2" alt="M1-3" onclick="(function(el){document.getElementById('c1').src=lbD['l1'][2];lbI['l1']=parseInt('2');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
         </div>
       </div>
     </div>
 
     <div class="cam-card">
-      <div class="cam-photo" data-lb="l2">
-        <img src="img/cam2.jpg" alt="Camera Matrimoniale 2 B&B La Piazza Torricella Sicura" id="c2">
+      <div class="cam-photo" data-lb="l2" onclick="oLB('l2',lbI['l2']||0)">
+        <img loading="lazy" src="img/cam2.jpg" alt="Camera Matrimoniale 2 B&B La Piazza Torricella Sicura" id="c2">
         <div class="cam-overlay"><div class="cam-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Vedi foto</div></div>
       </div>
       <div class="cam-body">
         <div class="cam-name">Camera Matrimoniale 2</div>
-        <p class="cam-desc">Elegante con toni caldi e luce naturale. Letto matrimoniale, TV, bagno privato. Vista sul Gran Sasso.</p>
+        <p class="cam-desc">Camera matrimoniale elegante con toni caldi, luce naturale e vista sul Gran Sasso. Letto matrimoniale, bagno privato e TV.</p>
         <div class="cam-thumbs">
-          <img src="img/cam2_t1.jpg" class="ct on cam-thumb-btn" data-cid="c2" data-lid="l2" data-idx="0" alt="M2-1">
-          <img src="img/cam2_t2.jpg" class="ct cam-thumb-btn" data-cid="c2" data-lid="l2" data-idx="1" alt="M2-2">
-          <img src="img/cam2_t3.jpg" class="ct cam-thumb-btn" data-cid="c2" data-lid="l2" data-idx="2" alt="M2-3">
+          <img loading="lazy" src="img/cam2_t1.jpg" class="ct on cam-thumb-btn" data-cid="c2" data-lid="l2" data-idx="0" alt="M2-1" onclick="(function(el){document.getElementById('c2').src=lbD['l2'][0];lbI['l2']=parseInt('0');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
+          <img loading="lazy" src="img/cam2_t2.jpg" class="ct cam-thumb-btn" data-cid="c2" data-lid="l2" data-idx="1" alt="M2-2" onclick="(function(el){document.getElementById('c2').src=lbD['l2'][1];lbI['l2']=parseInt('1');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
+          <img loading="lazy" src="img/cam2_t3.jpg" class="ct cam-thumb-btn" data-cid="c2" data-lid="l2" data-idx="2" alt="M2-3" onclick="(function(el){document.getElementById('c2').src=lbD['l2'][2];lbI['l2']=parseInt('2');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
         </div>
       </div>
     </div>
 
     <div class="cam-card">
-      <div class="cam-photo" data-lb="l3">
-        <img src="img/cam3.jpg" alt="Cameretta letti singoli B&B La Piazza Torricella Sicura" id="c3">
+      <div class="cam-photo" data-lb="l3" onclick="oLB('l3',lbI['l3']||0)">
+        <img loading="lazy" src="img/cam3.jpg" alt="Cameretta letti singoli B&B La Piazza Torricella Sicura" id="c3">
         <div class="cam-overlay"><div class="cam-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Vedi foto</div></div>
       </div>
       <div class="cam-body">
         <div class="cam-name">Cameretta</div>
-        <p class="cam-desc">Colorata e allegra con due letti singoli, balcone e zona pranzo. Perfetta per famiglie con bambini.</p>
+        <p class="cam-desc">Camera con due letti singoli, balcone con vista e zona pranzo privata. Perfetta per famiglie con bambini o amici in viaggio.</p>
         <div class="cam-thumbs">
-          <img src="img/cam3_t1.jpg" class="ct on cam-thumb-btn" data-cid="c3" data-lid="l3" data-idx="0" alt="MC-1">
-          <img src="img/cam3_t2.jpg" class="ct cam-thumb-btn" data-cid="c3" data-lid="l3" data-idx="1" alt="MC-2">
+          <img loading="lazy" src="img/cam3_t1.jpg" class="ct on cam-thumb-btn" data-cid="c3" data-lid="l3" data-idx="0" alt="MC-1" onclick="(function(el){document.getElementById('c3').src=lbD['l3'][0];lbI['l3']=parseInt('0');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
+          <img loading="lazy" src="img/cam3_t2.jpg" class="ct cam-thumb-btn" data-cid="c3" data-lid="l3" data-idx="1" alt="MC-2" onclick="(function(el){document.getElementById('c3').src=lbD['l3'][1];lbI['l3']=parseInt('1');el.closest('.cam-thumbs').querySelectorAll('.cam-thumb-btn').forEach(t=>t.classList.remove('on'));el.classList.add('on')})(this)">
         </div>
       </div>
     </div>
@@ -578,26 +582,27 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
 <div class="lb" id="l1" onclick="cLBbg(event,'l1')">
   <button class="lb-x" onclick="cLB('l1')">✕</button>
   <button class="lb-n lb-prev" onclick="nLB('l1',-1)">‹</button>
-  <img class="lb-img" id="l1i" src="img/cam1_l1.jpg" alt="Matrimoniale 1">
+  <img loading="lazy" class="lb-img" id="l1i" src="img/cam1_l1.jpg" alt="Matrimoniale 1">
   <button class="lb-n lb-next" onclick="nLB('l1',1)">›</button>
   <div class="lb-cap" id="l1c">Camera Matrimoniale 1 — 1/4</div>
 </div>
 <div class="lb" id="l2" onclick="cLBbg(event,'l2')">
   <button class="lb-x" onclick="cLB('l2')">✕</button>
   <button class="lb-n lb-prev" onclick="nLB('l2',-1)">‹</button>
-  <img class="lb-img" id="l2i" src="img/cam2_l1.jpg" alt="Matrimoniale 2">
+  <img loading="lazy" class="lb-img" id="l2i" src="img/cam2_l1.jpg" alt="Matrimoniale 2">
   <button class="lb-n lb-next" onclick="nLB('l2',1)">›</button>
   <div class="lb-cap" id="l2c">Camera Matrimoniale 2 — 1/3</div>
 </div>
 <div class="lb" id="l3" onclick="cLBbg(event,'l3')">
   <button class="lb-x" onclick="cLB('l3')">✕</button>
   <button class="lb-n lb-prev" onclick="nLB('l3',-1)">‹</button>
-  <img class="lb-img" id="l3i" src="img/cam3_l1.jpg" alt="Cameretta">
+  <img loading="lazy" class="lb-img" id="l3i" src="img/cam3_l1.jpg" alt="Cameretta">
   <button class="lb-n lb-next" onclick="nLB('l3',1)">›</button>
   <div class="lb-cap" id="l3c">Cameretta — 1/2</div>
 </div>
 
 <!-- ESPERIENZE -->
+
 <section class="sec sec-sand" id="esperienze">
   <div class="split-hdr">
     <div class="fade"><div class="lbl">Cosa fare</div><h2 class="h2" style="margin-top:.8rem">Esperienze<br><span class="em">da non perdere</span></h2></div>
@@ -607,23 +612,23 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
   <div class="esp-grid fade" id="espGrid">
 
     <div class="esp-card" data-id="0" onclick="toggleEsp(0)">
-      <div class="esp-photo"><img src="img/esp_gransasso.jpg" alt="Vista Gran Sasso da Torricella Sicura" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Montagna &amp; Natura</div><div class="esp-title">Gran Sasso</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+      <div class="esp-photo"><img loading="lazy" src="img/esp_gransasso.jpg" alt="Vista Gran Sasso da Torricella Sicura" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Montagna &amp; Natura</div><div class="esp-title">Gran Sasso</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
     </div>
 
     <div class="esp-card" data-id="1" onclick="toggleEsp(1)">
-      <div class="esp-photo"><img src="img/esp_laga.jpg" alt="Monti della Laga Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Natura &amp; Cascate</div><div class="esp-title">Monti della Laga</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+      <div class="esp-photo"><img loading="lazy" src="img/esp_laga.jpg" alt="Monti della Laga Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Natura &amp; Cascate</div><div class="esp-title">Monti della Laga</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
     </div>
 
     <div class="esp-card" data-id="2" onclick="toggleEsp(2)">
-      <div class="esp-photo"><img src="img/esp_costa.jpg" alt="Costa Adriatica Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Costa &amp; Spiagge</div><div class="esp-title">Costa Adriatica</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+      <div class="esp-photo"><img loading="lazy" src="img/esp_costa.jpg" alt="Costa Adriatica Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Costa &amp; Spiagge</div><div class="esp-title">Costa Adriatica</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
     </div>
 
     <div class="esp-card" data-id="3" onclick="toggleEsp(3)">
-      <div class="esp-photo"><img src="img/esp_borghi.jpg" alt="Rocca Calascio borghi Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Arte &amp; Storia</div><div class="esp-title">Borghi e castelli</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+      <div class="esp-photo"><img loading="lazy" src="img/esp_borghi.jpg" alt="Rocca Calascio borghi Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Arte &amp; Storia</div><div class="esp-title">Borghi e castelli</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
     </div>
 
     <div class="esp-card" data-id="4" onclick="toggleEsp(4)">
-      <div class="esp-photo"><img src="img/esp_gastro.jpg" alt="Gastronomia porcini Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Sapori Abruzzesi</div><div class="esp-title">Gastronomia</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
+      <div class="esp-photo"><img loading="lazy" src="img/esp_gastro.jpg" alt="Gastronomia porcini Abruzzo" class="esp-bg"><div class="esp-ov"><div class="esp-cat">Sapori Abruzzesi</div><div class="esp-title">Gastronomia</div></div><div class="esp-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
     </div>
 
     <!-- PANNELLI DETTAGLIO -->
@@ -746,7 +751,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
 <div class="lb" id="lbs" onclick="cLBbg(event,'lbs')">
   <button class="lb-x" onclick="cLB('lbs')">✕</button>
   <button class="lb-n lb-prev" onclick="nLBS(-1)">‹</button>
-  <img class="lb-img" id="lbsi" src="img/spazi_cucina.jpg" alt="Struttura B&B La Piazza">
+  <img loading="lazy" class="lb-img" id="lbsi" src="img/spazi_cucina.jpg" alt="Struttura B&B La Piazza">
   <button class="lb-n lb-next" onclick="nLBS(1)">›</button>
   <div class="lb-cap" id="lbsc">Cucina — 1/3</div>
 </div>
@@ -832,7 +837,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
       <p class="fnote">* Campi obbligatori. Risponderemo entro 24 ore.</p>
     </form>
     <div class="rec-box">
-      <div class="rec-qr"><img src="img/qrcode_recensione.png" alt="QR Code recensione Google B&B La Piazza"></div>
+      <div class="rec-qr"><img loading="lazy" src="img/qrcode_recensione.png" alt="QR Code recensione Google B&B La Piazza"></div>
       <div class="rec-content">
         <div class="rec-stars">★★★★★</div>
         <div class="rec-title">Lascia una recensione su Google</div>
@@ -894,8 +899,25 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
 const nav=document.getElementById('nav');
 const backTop=document.getElementById('backTop');
 window.addEventListener('scroll',()=>{nav.classList.toggle('solid',window.scrollY>70);if(backTop)backTop.classList.toggle('visible',window.scrollY>400);});
-function oM(){document.getElementById('mob').classList.add('open');document.body.style.overflow='hidden'}
-function cM(){document.getElementById('mob').classList.remove('open');document.body.style.overflow=''}
+function tM(){
+  const mob=document.getElementById('mob');
+  const burger=document.querySelector('.nav-burger');
+  if(mob.classList.contains('open')){
+    mob.classList.remove('open');
+    burger.classList.remove('active');
+    document.body.style.overflow='';
+  } else {
+    mob.classList.add('open');
+    burger.classList.add('active');
+    document.body.style.overflow='hidden';
+  }
+}
+function oM(){tM();}
+function cM(){
+  document.getElementById('mob').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('active');
+  document.body.style.overflow='';
+}
 const slImgs=['img/spazi_cucina.jpg','img/bagno_1.jpg','img/bagno_2.jpg'];
 const slCaps=['Cucina — 1/3','Bagno 1 con vasca — 2/3','Bagno 2 con doccia — 3/3'];
 let slIdx=0;
