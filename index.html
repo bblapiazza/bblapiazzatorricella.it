@@ -287,6 +287,8 @@ a{text-decoration:none;color:inherit}
 .cr{background:var(--sand);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
 .flbl{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);display:block;margin-bottom:.35rem}
 .fi{width:100%;padding:.82rem 1rem;background:white;border:1px solid rgba(0,0,0,.1);font-family:'Outfit',sans-serif;font-size:.85rem;color:var(--ink2);outline:none;border-radius:0;-webkit-appearance:none;transition:border-color .3s}
+.fi[type="date"]{-webkit-appearance:auto;appearance:auto;min-height:2.9rem}
+.fi[type="date"]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.6}
 .fi:focus{border-color:var(--gold)}
 .fi::placeholder{color:rgba(0,0,0,.22)}
 textarea.fi{resize:vertical;min-height:88px}
@@ -834,7 +836,7 @@ footer{background:#0e0b08;padding:2.5rem 4rem;display:flex;justify-content:space
       <div class="frow"><div class="fg"><label class="flbl">Nome *</label><input class="fi" type="text" name="nome" required placeholder="Il tuo nome"></div><div class="fg"><label class="flbl">Cognome *</label><input class="fi" type="text" name="cognome" required placeholder="Il tuo cognome"></div></div>
       <div class="fg"><label class="flbl">Email *</label><input class="fi" type="email" name="email" required placeholder="la-tua@email.it"></div>
       <div class="fg"><label class="flbl">Telefono</label><input class="fi" type="tel" name="telefono" placeholder="+39 ..."></div>
-      <div class="frow"><div class="fg"><label class="flbl">Check-in *</label><input class="fi" type="text" name="checkin" required placeholder="gg/mm/aaaa" pattern="\d{2}/\d{2}/\d{4}" inputmode="numeric"></div><div class="fg"><label class="flbl">Check-out *</label><input class="fi" type="text" name="checkout" required placeholder="gg/mm/aaaa" pattern="\d{2}/\d{2}/\d{4}" inputmode="numeric"></div></div>
+      <div class="frow"><div class="fg"><label class="flbl">Check-in *</label><input class="fi" type="date" name="checkin" id="fcheckin" required></div><div class="fg"><label class="flbl">Check-out *</label><input class="fi" type="date" name="checkout" id="fcheckout" required></div></div>
       <div class="fg">
         <label class="flbl">Camera/e (puoi selezionarne più di una)</label>
         <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.3rem">
@@ -957,6 +959,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 const fades=document.querySelectorAll('.fade,.fade2');
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}})},{threshold:0.1});
 fades.forEach(el=>obs.observe(el));
+// Date minime: oggi per check-in, check-in+1 per check-out
+const fci=document.getElementById('fcheckin'),fco=document.getElementById('fcheckout');
+if(fci&&fco){
+  const today=new Date().toISOString().split('T')[0];
+  fci.min=today;fco.min=today;
+  fci.addEventListener('change',()=>{
+    if(fci.value){const d=new Date(fci.value);d.setDate(d.getDate()+1);fco.min=d.toISOString().split('T')[0];
+    if(fco.value&&fco.value<=fci.value)fco.value='';}
+  });
+}
 const cf=document.getElementById('cf');
 if(cf)cf.addEventListener('submit',async e=>{e.preventDefault();const btn=cf.querySelector('.fbtn');btn.textContent='Invio...';btn.disabled=true;try{const r=await fetch(cf.action,{method:'POST',body:new FormData(cf),headers:{'Accept':'application/json'}});if(r.ok){cf.style.display='none';document.getElementById('fok').style.display='block';}else{btn.textContent='Errore — riprova';btn.disabled=false;}}catch{btn.textContent='Errore — riprova';btn.disabled=false;}});
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
